@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CRUD_MVC_LINQ_EF_Core.Models.Employee>
+
+<div class="d-flex justify-content-between my-3">
+    <h2>Employee Directory</h2>
+    <a asp-action="Create" class="btn btn-primary">Add New Employee</a>
+</div>
+
+@{ 
+    int serialNo = 1;
+}
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(serialNo++)</td>
+                <td>@item.ename</td>
+                <td>@item.Age</td>
+                <td>@item.salary</td>
+                <td>@item.Department</td>
+                <td>@item.Email_Id</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
